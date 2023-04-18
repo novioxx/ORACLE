@@ -11,11 +11,11 @@ WHERE MAJOR = '화학'
 OR MAJOR = '생물'
 GROUP BY MAJOR;
 
---3) 부임일이 10년 이상 된 직급별(정교수, 조교수, 부교수) 교수의 수를 검색하세요
+--3) 부임일이 25년 이상 된 직급별(정교수, 조교수, 부교수) 교수의 수를 검색하세요
 SELECT ORDERS,
        COUNT(*)
        FROM PROFESSOR
-       WHERE MONTHS_BETWEEN(SYSDATE,HIREDATE)/12 >= 10
+       WHERE MONTHS_BETWEEN(SYSDATE,HIREDATE)/12 >= 25
        GROUP BY ORDERS;
 
 --4) 과목명에 화학이 포함된 과목의 학점수 총합을 검색하세요
@@ -25,6 +25,9 @@ SELECT CNAME,
        WHERE CNAME LIKE '%화학%'
        GROUP BY CNAME;
 
+SELECT SUM(ST_NUM) 
+       FROM COURSE
+       WHERE CNAME LIKE '%화학%';
 
 --5) 학과별 기말고사 평균을 성적순(성적 내림차순)으로 검색하세요
 SELECT S.MAJOR,
