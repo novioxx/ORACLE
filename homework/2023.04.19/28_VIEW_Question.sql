@@ -1,9 +1,8 @@
 --뷰 이름은 자유
 --1) 학생의 평점 4.5 만점으로 환산된 정보를 검색할 수 있는 뷰를 생성하세요.
 CREATE OR REPLACE VIEW V_AVG_SNAME(
-    SNO,SNAME,MAJOR,AVGAVR
-    )AS (
-    --위에서 지정한 컬럼의순서와 개수가 일치해야 한다.
+                 SNO,SNAME,MAJOR,AVGAVR
+         )AS (
         SELECT SNO, ST.SNAME, ST.MAJOR, ST.AVR*4.5/4.0 AS RR
         FROM STUDENT ST
         );
